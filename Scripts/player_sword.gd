@@ -121,6 +121,7 @@ func handle_gravity(delta):
 func handle_input_buffer(delta):
 	jump_buffer_time_left -= delta
 	attack_buffer_time_left -= delta
+	dash_buffer_time_left -= delta
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_time_left = JUMP_BUFFER_TIME
 	if Input.is_action_just_pressed("attack"):
@@ -169,6 +170,7 @@ func handle_flip():
 		sprite.flip_h = true
 
 func handle_attack():
+	#rocket jump
 	if can_attack and attack_buffer_time_left > 0:
 		can_attack = false
 		var shoot_vector: Vector2 = get_global_mouse_position() - global_position
@@ -182,6 +184,7 @@ func handle_attack():
 		attack_cooldown_timer.start()
 		rocket_jump(shoot_vector)
 		attack_buffer_time_left = 0.0
+	#dash attack
 	elif dash_buffer_time_left > 0 and target_enemy != null:
 		dash_attack()
 		dash_buffer_time_left = 0.0
