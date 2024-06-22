@@ -269,10 +269,8 @@ func _on_kill_collision_body_shape_entered(body_rid, body, body_shape_index, loc
 
 
 func _on_target_area_body_entered(body):
-	print(body.get_groups())
 	if body.is_in_group("enemy"):
 		target_enemy = body
-		print("got enemy!")
 
 
 func _on_target_area_body_exited(body):
