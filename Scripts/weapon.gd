@@ -5,6 +5,7 @@ const PROJECTILE_LIFETIME: float = 10
 
 @onready var projectile_scene: PackedScene = preload("res://Scenes/projectile.tscn")
 @onready var shoot_point = $Anchor/shoot_point
+@onready var anchor = $Anchor
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,7 +13,8 @@ func _ready():
 
 
 func shoot(shoot_vector: Vector2):
-	var projectile = projectile_scene.instantiate()
-	get_tree().current_scene.add_child(projectile)
-	projectile.shoot(shoot_point.global_position, shoot_vector, PROJECTILE_SPEED, PROJECTILE_LIFETIME)
+	anchor.appear()
+	#var projectile = projectile_scene.instantiate()
+	#get_tree().current_scene.add_child(projectile)
+	#projectile.shoot(shoot_point.global_position, shoot_vector, PROJECTILE_SPEED, PROJECTILE_LIFETIME)
 

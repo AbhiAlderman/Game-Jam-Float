@@ -1,8 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmp3qf8sn25vn"]
+[gd_scene load_steps=8 format=3 uid="uid://cmp3qf8sn25vn"]
 
 [ext_resource type="Script" path="res://Scripts/weapon.gd" id="1_m6jgf"]
-[ext_resource type="Texture2D" uid="uid://5d3fnmgxvu7h" path="res://Assets/Weapons/lance.png" id="2_j6tri"]
+[ext_resource type="Texture2D" uid="uid://bovpwdenenwnh" path="res://Assets/Dragon_Ascent_MC.png" id="3_2fqma"]
 [ext_resource type="Script" path="res://Scripts/rotate_weapon.gd" id="3_rwytq"]
+[ext_resource type="Texture2D" uid="uid://br41nnhpa1vod" path="res://Assets/Weapons/Windslash.png" id="4_hiitf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nh4o6"]
+atlas = ExtResource("3_2fqma")
+region = Rect2(120, 120, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mm446"]
+atlas = ExtResource("4_hiitf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s2ams"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nh4o6")
+}],
+"loop": true,
+"name": &"invisible",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mm446")
+}],
+"loop": true,
+"name": &"slash",
+"speed": 5.0
+}]
 
 [node name="weapon" type="Node2D"]
 script = ExtResource("1_m6jgf")
@@ -10,13 +38,14 @@ script = ExtResource("1_m6jgf")
 [node name="Anchor" type="Marker2D" parent="."]
 script = ExtResource("3_rwytq")
 
-[node name="Sprite2D" type="Sprite2D" parent="Anchor"]
-position = Vector2(17.0041, -1)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Anchor"]
+position = Vector2(13.0082, -0.990649)
 rotation = 0.00055027
 scale = Vector2(1.0625, 0.9375)
-texture = ExtResource("2_j6tri")
+sprite_frames = SubResource("SpriteFrames_s2ams")
+animation = &"slash"
 
 [node name="shoot_point" type="Marker2D" parent="Anchor"]
 z_index = 1
 z_as_relative = false
-position = Vector2(32.0041, 0)
+position = Vector2(28.0082, 0.00935078)

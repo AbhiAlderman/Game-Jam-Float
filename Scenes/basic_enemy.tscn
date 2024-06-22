@@ -1,0 +1,137 @@
+[gd_scene load_steps=18 format=3 uid="uid://cxtpblk7wpaec"]
+
+[ext_resource type="Script" path="res://Scripts/basic_enemy.gd" id="1_3k2c8"]
+[ext_resource type="Texture2D" uid="uid://d2yarw5u2oiew" path="res://Assets/Weapons/preview_slash.png" id="2_70sda"]
+[ext_resource type="Texture2D" uid="uid://duh2s63hkw24o" path="res://Assets/Enemies/Bat.png" id="2_e30bl"]
+[ext_resource type="Texture2D" uid="uid://bovpwdenenwnh" path="res://Assets/Dragon_Ascent_MC.png" id="3_bmohu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3hxpi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a6u6"]
+atlas = ExtResource("2_e30bl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1058t"]
+atlas = ExtResource("3_bmohu")
+region = Rect2(80, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oyud"]
+atlas = ExtResource("2_e30bl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7etcn"]
+atlas = ExtResource("3_bmohu")
+region = Rect2(120, 40, 40, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_swquu"]
+atlas = ExtResource("2_e30bl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cp6fs"]
+atlas = ExtResource("2_e30bl")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xusm0"]
+atlas = ExtResource("2_e30bl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmoed"]
+atlas = ExtResource("2_e30bl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdxx0"]
+atlas = ExtResource("2_e30bl")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p05hw"]
+atlas = ExtResource("2_e30bl")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l0uu7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6a6u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1058t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oyud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7etcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_swquu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7etcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cp6fs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7etcn")
+}],
+"loop": true,
+"name": &"die",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xusm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmoed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdxx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p05hw")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_axesr"]
+radius = 3.0
+
+[node name="basic_enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_3k2c8")
+
+[node name="hitbox" type="Area2D" parent="." groups=["enemy"]]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CircleShape2D_3hxpi")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5625, 1.5)
+sprite_frames = SubResource("SpriteFrames_l0uu7")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_axesr")
+
+[node name="Marker" type="Marker2D" parent="."]
+
+[node name="slash_preview" type="Sprite2D" parent="Marker"]
+modulate = Color(0.54902, 0.917647, 1, 1)
+z_index = 3
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(0.996094, 0.25)
+texture = ExtResource("2_70sda")
+
+[node name="Death_Timer" type="Timer" parent="."]
+wait_time = 0.663
+one_shot = true
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="timeout" from="Death_Timer" to="." method="_on_death_timer_timeout"]

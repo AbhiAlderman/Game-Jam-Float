@@ -34,5 +34,4 @@ func _on_timer_timeout():
 func _on_area_2d_body_entered(body):
 	#if body.is_in_group("enemy"):
 		#enemy.take_hit()
-	print("bullet collided")
 	queue_free()

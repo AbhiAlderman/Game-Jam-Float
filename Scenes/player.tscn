@@ -1,6 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://qnhg3tpnbdhp"]
+[gd_scene load_steps=31 format=3 uid="uid://qnhg3tpnbdhp"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_l4js2"]
+[ext_resource type="Script" path="res://Scripts/player_sword.gd" id="1_d00t0"]
 [ext_resource type="Texture2D" uid="uid://bovpwdenenwnh" path="res://Assets/Dragon_Ascent_MC.png" id="2_uvrkl"]
 [ext_resource type="Texture2D" uid="uid://ccgbfsivnvxq3" path="res://Assets/Prototype Player/Knight.png" id="5_1c6bv"]
 [ext_resource type="PackedScene" uid="uid://cmp3qf8sn25vn" path="res://Scenes/weapon.tscn" id="7_hw0fj"]
@@ -210,8 +210,12 @@ animations = [{
 radius = 7.0
 height = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ubcas"]
+radius = 78.5175
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
-script = ExtResource("1_l4js2")
+position = Vector2(0, -1)
+script = ExtResource("1_d00t0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -231,17 +235,21 @@ frame_progress = 0.951597
 
 [node name="Death_Timer" type="Timer" parent="Timers"]
 wait_time = 0.6
+one_shot = true
 
 [node name="Attack_Cooldown_timer" type="Timer" parent="Timers"]
 wait_time = 2.0
+one_shot = true
 
 [node name="Rocket_Jump_Timer" type="Timer" parent="Timers"]
 wait_time = 0.2
+one_shot = true
 
 [node name="weapon" parent="." instance=ExtResource("7_hw0fj")]
 position = Vector2(0, 1)
 
 [node name="Kill_Collision" type="Area2D" parent="."]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -249,7 +257,16 @@ collision_mask = 2
 position = Vector2(1, -2)
 shape = SubResource("CapsuleShape2D_0ia1w")
 
+[node name="Target_Area" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Target_Area"]
+shape = SubResource("CircleShape2D_ubcas")
+
 [connection signal="timeout" from="Timers/Death_Timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="Timers/Attack_Cooldown_timer" to="." method="_on_attack_cooldown_timer_timeout"]
 [connection signal="timeout" from="Timers/Rocket_Jump_Timer" to="." method="_on_rocket_jump_timer_timeout"]
 [connection signal="body_shape_entered" from="Kill_Collision" to="." method="_on_kill_collision_body_shape_entered"]
+[connection signal="body_entered" from="Target_Area" to="." method="_on_target_area_body_entered"]
+[connection signal="body_exited" from="Target_Area" to="." method="_on_target_area_body_exited"]
