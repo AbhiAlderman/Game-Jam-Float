@@ -11,10 +11,12 @@ script = ExtResource("1_m6jgf")
 script = ExtResource("3_rwytq")
 
 [node name="Sprite2D" type="Sprite2D" parent="Anchor"]
-position = Vector2(9, -1)
+position = Vector2(17.0041, -1)
 rotation = 0.00055027
 scale = Vector2(1.0625, 0.9375)
 texture = ExtResource("2_j6tri")
 
 [node name="shoot_point" type="Marker2D" parent="Anchor"]
-position = Vector2(24, 0)
+z_index = 1
+z_as_relative = false
+position = Vector2(32.0041, 0)

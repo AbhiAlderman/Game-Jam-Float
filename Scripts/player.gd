@@ -21,7 +21,7 @@ const ROCKET_JUMP_X_VELOCITY = 550.0
 const ROCKET_JUMP_Y_VELOCITY = 600.0
 const ROCKET_JUMP_GRAVITY = 700
 
-const CAMERA_ZOOM = Vector2(1.3, 1.3)
+const CAMERA_ZOOM = Vector2(2.3, 2.3)
 const ATTACK_BUFFER_TIME = 0.1
 #variables
 var coyote_time_left: float = 0.0
@@ -115,6 +115,7 @@ func handle_jump():
 	if jump_buffer_time_left > 0:
 		if is_on_floor() or coyote_time_left > 0:
 			velocity.y = JUMP_VELOCITY
+			refresh_attack()
 			player_state = states.AIRBORNE
 			jump_buffer_time_left = 0	
 	elif Input.is_action_pressed("jump") and not is_on_floor() and velocity.y >= 0:
@@ -166,7 +167,7 @@ func rocket_jump(shoot_vector: Vector2):
 	rocket_jump_timer.start()
 
 func refresh_attack():
-	pass
+	can_attack = true
 	
 func die():
 	dying = true
@@ -204,7 +205,8 @@ func _on_death_timer_timeout():
 
 
 func _on_attack_cooldown_timer_timeout():
-	can_attack = true
+	if is_on_floor():
+		refresh_attack()
 
 
 func _on_rocket_jump_timer_timeout():
