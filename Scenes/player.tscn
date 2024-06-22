@@ -1,37 +1,56 @@
-[gd_scene load_steps=37 format=3 uid="uid://qnhg3tpnbdhp"]
+[gd_scene load_steps=46 format=3 uid="uid://qnhg3tpnbdhp"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_l4js2"]
 [ext_resource type="Texture2D" uid="uid://cjuteog4wmwq1" path="res://Assets/Prototype Player/Asset Packs 1-4 (final)/Asset Pack-V1/Player Idle/Player Idle 48x48.png" id="1_tlqck"]
 [ext_resource type="Texture2D" uid="uid://bpha1k41041t7" path="res://Assets/Prototype Player/Asset Packs 1-4 (final)/Asset Pack-V1/Player Jump/player jump 48x48.png" id="2_6q7oa"]
 [ext_resource type="Texture2D" uid="uid://crm225t5vfc86" path="res://Assets/Prototype Player/Asset Packs 1-4 (final)/Asset Pack-V2/Air Spin/player air spin 48x48.png" id="2_gjivy"]
+[ext_resource type="Texture2D" uid="uid://c64fduelcmbwv" path="res://Assets/Prototype Player/Asset Packs 1-4 (final)/Asset Pack-V2/Player Death/Player Death 64x64.png" id="3_litjx"]
 [ext_resource type="Texture2D" uid="uid://bcmpkf4g3ikx2" path="res://Assets/Prototype Player/Asset Packs 1-4 (final)/Asset Pack-V1/Player Run/player run 48x48.png" id="3_xmwka"]
+[ext_resource type="Texture2D" uid="uid://ccgbfsivnvxq3" path="res://Assets/Prototype Player/Knight.png" id="5_1c6bv"]
+[ext_resource type="PackedScene" uid="uid://cmp3qf8sn25vn" path="res://Scenes/weapon.tscn" id="7_hw0fj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nqw2i"]
 height = 32.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6kjtg"]
-atlas = ExtResource("2_gjivy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dkt4"]
+atlas = ExtResource("3_litjx")
 region = Rect2(0, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5a6u1"]
-atlas = ExtResource("2_gjivy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo5ll"]
+atlas = ExtResource("3_litjx")
 region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_in7f4"]
-atlas = ExtResource("2_gjivy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0wof"]
+atlas = ExtResource("3_litjx")
 region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ybvjx"]
-atlas = ExtResource("2_gjivy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_gig15"]
+atlas = ExtResource("3_litjx")
 region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s3cxt"]
-atlas = ExtResource("2_gjivy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mrs8l"]
+atlas = ExtResource("3_litjx")
 region = Rect2(192, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wo5gu"]
-atlas = ExtResource("2_gjivy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ps6n"]
+atlas = ExtResource("3_litjx")
 region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1k3p"]
+atlas = ExtResource("3_litjx")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgire"]
+atlas = ExtResource("3_litjx")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4myf6"]
+atlas = ExtResource("3_litjx")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p22ic"]
+atlas = ExtResource("3_litjx")
+region = Rect2(432, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_373g8"]
 atlas = ExtResource("2_gjivy")
@@ -125,30 +144,46 @@ region = Rect2(288, 0, 48, 48)
 atlas = ExtResource("3_xmwka")
 region = Rect2(336, 0, 48, 48)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4qbs"]
+atlas = ExtResource("5_1c6bv")
+region = Rect2(0, 0, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_78kl8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6kjtg")
+"texture": SubResource("AtlasTexture_3dkt4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5a6u1")
+"texture": SubResource("AtlasTexture_yo5ll")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_in7f4")
+"texture": SubResource("AtlasTexture_m0wof")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ybvjx")
+"texture": SubResource("AtlasTexture_gig15")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s3cxt")
+"texture": SubResource("AtlasTexture_mrs8l")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wo5gu")
+"texture": SubResource("AtlasTexture_1ps6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1k3p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgire")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4myf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p22ic")
 }],
 "loop": true,
-"name": &"dash",
-"speed": 13.0
+"name": &"dead",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -248,30 +283,56 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 17.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4qbs")
+}],
+"loop": true,
+"name": &"test_idle",
+"speed": 5.0
 }]
 
-[node name="player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ia1w"]
+
+[node name="player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_l4js2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_nqw2i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_78kl8")
-animation = &"dash"
-frame_progress = 0.455005
+animation = &"jump_down"
+frame_progress = 0.189888
 
 [node name="Camera" type="Camera2D" parent="."]
 
 [node name="Timers" type="Node" parent="."]
 
-[node name="Dash_Length_Timer" type="Timer" parent="Timers"]
-wait_time = 0.16
-one_shot = true
+[node name="Death_Timer" type="Timer" parent="Timers"]
 
-[node name="Dash_Cooldown_Timer" type="Timer" parent="Timers"]
-wait_time = 1.531
+[node name="Attack_Cooldown_timer" type="Timer" parent="Timers"]
+wait_time = 2.0
 
-[connection signal="timeout" from="Timers/Dash_Length_Timer" to="." method="_on_dash_length_timer_timeout"]
-[connection signal="timeout" from="Timers/Dash_Cooldown_Timer" to="." method="_on_dash_cooldown_timer_timeout"]
+[node name="Rocket_Jump_Timer" type="Timer" parent="Timers"]
+wait_time = 0.2
+
+[node name="weapon" parent="." instance=ExtResource("7_hw0fj")]
+position = Vector2(0, 1)
+
+[node name="Kill_Collision" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kill_Collision"]
+shape = SubResource("CapsuleShape2D_0ia1w")
+
+[connection signal="timeout" from="Timers/Death_Timer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="Timers/Attack_Cooldown_timer" to="." method="_on_attack_cooldown_timer_timeout"]
+[connection signal="timeout" from="Timers/Rocket_Jump_Timer" to="." method="_on_rocket_jump_timer_timeout"]
+[connection signal="body_shape_entered" from="Kill_Collision" to="." method="_on_kill_collision_body_shape_entered"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3ac4t6djj3r2"]
+
+[ext_resource type="Script" path="res://Scripts/float_particles.gd" id="1_0kapd"]
+
+[sub_resource type="Curve" id="Curve_e102y"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.606667, 0.505494), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_74ffi"]
+curve = SubResource("Curve_e102y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kvm11"]
+lifetime_randomness = 0.02
+particle_flag_disable_z = true
+angle_min = -720.0
+angular_velocity_max = 8.1
+gravity = Vector3(0, 98, 0)
+scale_min = 10.0
+scale_max = 15.0
+scale_curve = SubResource("CurveTexture_74ffi")
+color = Color(0.290196, 0.890196, 0.968627, 0.635294)
+
+[node name="GPUParticles2D" type="GPUParticles2D"]
+position = Vector2(0, -1)
+amount = 10
+amount_ratio = 0.7333
+process_material = SubResource("ParticleProcessMaterial_kvm11")
+lifetime = 0.7
+speed_scale = 1.2
+randomness = 0.23
+script = ExtResource("1_0kapd")
