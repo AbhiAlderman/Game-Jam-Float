@@ -18,8 +18,8 @@ const JUMP_HOLD_GRAVITY: float = 600
 const COYOTE_TIME: float = 0.1
 const JUMP_BUFFER_TIME: float = 0.15
 const JUMP_HOLD_TIME: float = 0.2
-const ROCKET_JUMP_X_VELOCITY: float = 400.0
-const ROCKET_JUMP_Y_VELOCITY: float = 400.0
+const ROCKET_JUMP_X_VELOCITY: float = 530.0
+const ROCKET_JUMP_Y_VELOCITY: float = 530.0
 const DASH_VELOCITY: float = 650.0
 const ROCKET_JUMP_GRAVITY: float = 700
 
